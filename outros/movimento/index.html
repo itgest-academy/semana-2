@@ -1,12 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Movimento</title>
+  <style>
+    body {
+      position: relative;
+    }
+
+    #image {
+      position: absolute;
+      left: 0;
+    }
+  </style>
 </head>
+
 <body>
-  
+  <img id="image" src="./chara-1.png">
+  <script>
+    const image = document.getElementById('image')
+
+    let i = 0
+    const velocity = 10
+    let distance = 0
+
+    setInterval(() => {
+      if (i == 0) {
+        image.src = './chara-1.png'
+
+        i++
+      } else if (i == 1) {
+        image.src = './chara-2.png'
+
+        i++
+      } else {
+        image.src = './chara-3.png'
+
+        i = 0
+      }
+
+      distance = distance + velocity
+
+      image.style = `position: absolute; left: ${distance}px`
+    }, 300)
+  </script>
 </body>
+
 </html>
