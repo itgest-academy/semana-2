@@ -24,7 +24,7 @@
     const image = document.getElementById('image')
 
     let i = 0
-    const velocity = 10
+    let velocity = 10
     let distance = 0
 
     setInterval(() => {
@@ -43,6 +43,10 @@
       }
 
       distance = distance + velocity
+
+      if (distance >= (window.innerWidth / 2)) {
+        velocity = -velocity
+      }
 
       image.style = `position: absolute; left: ${distance}px`
     }, 300)
