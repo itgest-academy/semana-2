@@ -18,10 +18,12 @@
     console.log(includesHello)
     console.log(includesOk)
 
-    function includes(string, searchValue) {
+    function includes(string, searchValue, position) {
       let matchCount = 0
 
-      for (const char of string) {
+      for (let i = position || 0; i < string.length; i++) {
+        const char = string[i]
+        
         if (char === searchValue[matchCount]) {
           matchCount++
 
@@ -46,6 +48,7 @@
     console.log(includes('Hello World', 'Ok'))
     console.log(includes('Hello World Pka', 'Woa'))
     console.log(includes('lloW', 'loW'))
+    console.log(includes('lloW', 'loW', 2))
   </script>
 </body>
 
