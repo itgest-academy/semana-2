@@ -1,6 +1,6 @@
 # Strings
 
-Toda **string** pode ser tratada com um array **array**
+Toda **string** pode ser tratada com um **array**
 
 ```js
 const nome = 'Marianne'
