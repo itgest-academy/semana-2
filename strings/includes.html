@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Includes</title>
+</head>
+
+<body>
+  <script>
+    const includesWorld = 'Hello World'.includes('World')
+    const includesHello = 'Hello World'.includes('Hello')
+    const includesOk = 'Hello World'.includes('Ok')
+
+    console.log(includesWorld)
+    console.log(includesHello)
+    console.log(includesOk)
+
+    function includes(string, searchValue) {
+      let matchCount = 0
+
+      for (const char of string) {
+        if (char === searchValue[matchCount]) {
+          matchCount++
+
+          if (matchCount === searchValue.length) {
+            return true
+          }
+        } else {
+          matchCount = 0
+
+          if (char === searchValue[matchCount]) {
+            matchCount++
+          }
+        }
+      }
+
+      return false
+    }
+
+    console.log(includes('Hello World', 'Hello Worl'))
+    console.log(includes('Hello World Pka', 'World'))
+    console.log(includes('Hello World', 'Hello'))
+    console.log(includes('Hello World', 'Ok'))
+    console.log(includes('Hello World Pka', 'Woa'))
+    console.log(includes('lloW', 'loW'))
+  </script>
+</body>
+
+</html>
