@@ -15,6 +15,10 @@
       position: absolute;
       left: 0;
     }
+
+    .reversed {
+      transform: scaleX(-1)
+    }
   </style>
 </head>
 
@@ -44,8 +48,14 @@
 
       distance = distance + velocity
 
-      if (distance >= (window.innerWidth / 2)) {
+      if (distance >= (window.innerWidth / 5)) {
         velocity = -velocity
+
+        image.classList.add('reversed')
+      } else if (distance <= 0) {
+        velocity = -velocity
+
+        image.classList.remove('reversed')
       }
 
       image.style = `position: absolute; left: ${distance}px`
