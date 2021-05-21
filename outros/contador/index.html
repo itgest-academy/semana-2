@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contador</title>
+
+  <style>
+    body,
+    html {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      background-color: #2d2d2d;
+    }
+
+    .buttons {
+      margin-top: 35px;
+    }
+
+    .action-button {
+      cursor: pointer;
+      opacity: .8;
+      border: 1px solid #fff;
+      padding: 10px;
+      border-radius: 5px;
+      width: 100px;
+    }
+
+    #number {
+      display: block;
+      font-size: 10em;
+      color: white;
+      opacity: .8;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 id="number">0</h1>
+
+    <div class="buttons">
+      <button id="play-pause" class="action-button">Play</button>
+      <button id="reset" class="action-button">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    let i = 0
+    let isCounting = false
+    let isFirstCount = true
+
+    const counter = document.getElementById('number')
+    const playPauseButton = document.getElementById('play-pause')
+    const resetButton = document.getElementById('reset')
+
+    playPauseButton.addEventListener('click', () => {
+      if (!isCounting) {
+        playPauseButton.innerText = 'Pause'
+      } else {
+        playPauseButton.innerText = 'Play'
+      }
+
+      isCounting = !isCounting
+
+      if (isFirstCount) {
+        isFirstCount = false
+
+        setInterval(() => {
+          if (isCounting) {
+            i++
+
+            counter.innerText = i
+          }
+        }, 1000)
+      }
+    })
+
+    resetButton.addEventListener('click', () => {
+      isCounting = false
+
+      i = 0
+
+      counter.innerText = '0'
+    })
+  </script>
+</body>
+
+</html>
