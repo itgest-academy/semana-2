@@ -52,7 +52,7 @@
       outline: none;
       text-align: center;
     }
-    
+
     #red-input {
       background-color: red;
     }
@@ -90,15 +90,15 @@
   </div>
 
   <script>
-    const red = document.getElementById('red-input')
-    const green = document.getElementById('green-input')
-    const blue = document.getElementById('blue-input')
-
     const background = document.getElementById('background')
 
     document.querySelectorAll('.rgb-form-input').forEach((input) => {
       input.addEventListener('input', () => {
-        background.style = `background-color: rgb(${red.value},${green.value},${blue.value})`
+        const { value: red } = document.getElementById('red-input')
+        const { value: green } = document.getElementById('green-input')
+        const { value: blue } = document.getElementById('blue-input')
+
+        background.style = `background-color: rgb(${[red, green, blue].join(',')})`
       })
     })
   </script>
