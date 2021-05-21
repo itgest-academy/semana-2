@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cor de fundo</title>
+
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    #background {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .rgb-form {
+      display: flex;
+    }
+
+    .rgb-form-input-wrapper {
+      margin-right: 15px;
+    }
+
+    .rgb-form-input-wrapper:last-child {
+      margin-right: 0;
+    }
+
+    .rgb-form-input-label {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .rgb-form-input-label-title {
+      margin-bottom: 15px;
+      color: grey;
+      text-transform: uppercase;
+    }
+
+    .rgb-form-input {
+      width: 50px;
+      border-radius: 5px;
+      outline: none;
+      text-align: center;
+    }
+    
+    #red-input {
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="background">
+    <form class="rgb-form">
+      <div class="rgb-form-input-wrapper">
+        <label class="rgb-form-input-label">
+          <span class="rgb-form-input-label-title">R</span>
+
+          <input id="red-input" type="range" min="0" max="255" value="0" class="rgb-form-input">
+        </label>
+      </div>
+
+      <div class="rgb-form-input-wrapper">
+        <label class="rgb-form-input-label">
+          <span class="rgb-form-input-label-title">G</span>
+
+          <input id="green-input" type="range" min="0" max="255" value="0" class="rgb-form-input">
+        </label>
+
+      </div>
+
+      <div class="rgb-form-input-wrapper">
+        <label class="rgb-form-input-label">
+          <span class="rgb-form-input-label-title">B</span>
+
+          <input id="blue-input" type="range" min="0" max="255" value="0" class="rgb-form-input">
+        </label>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const red = document.getElementById('red-input')
+    const green = document.getElementById('green-input')
+    const blue = document.getElementById('blue-input')
+
+    const background = document.getElementById('background')
+
+    document.querySelectorAll('.rgb-form-input').forEach((input) => {
+      input.addEventListener('input', () => {
+        background.style = `background-color: rgb(${red.value},${green.value},${blue.value})`
+      })
+    })
+  </script>
+</body>
+
+</html>
