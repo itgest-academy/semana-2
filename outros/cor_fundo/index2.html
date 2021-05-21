@@ -1,0 +1,33 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+  <input id="r" class="rgb-input" oninput="updateColor()" type="number">
+
+  <input id="g" class="rgb-input" oninput="updateColor()" type="number">
+
+  <input id="b" class="rgb-input" oninput="updateColor()" type="number">
+</body>
+
+<script>
+  /*
+  document.querySelectorAll('.rgb-input').forEach(item => {
+    item.addEventListener('input', event => {
+      this.updateColor()
+    })
+  })
+  */
+
+  function updateColor() {
+    var r = document.getElementById("r").value || 0;
+    var g = document.getElementById("g").value || 0;
+    var b = document.getElementById("b").value || 0;
+
+    document.body.style.backgroundColor = 'rgb(' + [r, g, b].join(',') + ')';
+  }
+</script>
+
+</html>
