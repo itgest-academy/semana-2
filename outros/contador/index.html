@@ -59,41 +59,40 @@
 
   <script>
     let i = 0
-    let isCounting = false
-    let isFirstCount = true
+    let interval
 
     const counter = document.getElementById('number')
     const playPauseButton = document.getElementById('play-pause')
     const resetButton = document.getElementById('reset')
 
+    function startCounter() {
+      interval = setInterval(() => {
+        i++
+
+        counter.innerText = i
+      }, 1000)
+
+      playPauseButton.innerText = 'Pause'
+    }
+
+    function resetCounter() {
+      clearInterval(interval)
+
+      interval = undefined
+
+      playPauseButton.innerText = 'Play'
+    }
+
     playPauseButton.addEventListener('click', () => {
-      if (!isCounting) {
-        playPauseButton.innerText = 'Pause'
+      if (interval) {
+        resetCounter()
       } else {
-        playPauseButton.innerText = 'Play'
-      }
-
-      isCounting = !isCounting
-
-      if (isFirstCount) {
-        isFirstCount = false
-
-        setInterval(() => {
-          if (isCounting) {
-            i++
-
-            counter.innerText = i
-          }
-        }, 1000)
+        startCounter()
       }
     })
 
     resetButton.addEventListener('click', () => {
-      isCounting = false
-
-      i = 0
-
-      counter.innerText = '0'
+      resetCounter()
     })
   </script>
 </body>
